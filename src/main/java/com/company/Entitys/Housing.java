@@ -62,7 +62,7 @@ public class Housing {
         return square;
     }
 
-    @Column(name="nearest_metro", length = 15, nullable = false)
+    @Column(name="nearest_metro", length = 25, nullable = false)
     private String nearestMetro;
 
     public void setNearestMetro(String nearestMetro) {

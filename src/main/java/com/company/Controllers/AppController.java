@@ -6,6 +6,7 @@ import com.company.Services.HousingService;
 import com.company.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -52,73 +53,188 @@ public class AppController {
     }
 
     @RequestMapping(path = "/all_housings")
-    public @ResponseBody List<Housing> findAll(){
-        return housingService.findAll();
+    public String findAll(Model model){
+        List<Housing> housings = housingService.findAll();
+        model.addAttribute("housings", housings);
+        return "housing";
     }
 
     @RequestMapping(path = "/find_housing_by_type")
-    public @ResponseBody List<Housing> findByType(@RequestParam String type){
-        return housingService.findByType(type);
+    public String findHousingByType(Model model){
+        String type="";
+        model.addAttribute("type", type);
+        return "filter_type";
+    }
+
+    @RequestMapping(path = "/find_by_type")
+    public String findByType(@RequestParam String type, Model model){
+        List<Housing> housings = housingService.findByType(type);
+        model.addAttribute("housings", housings);
+        return "housing";
     }
 
     @RequestMapping(path = "/find_housing_by_price")
-    public @ResponseBody List<Housing> findByPrice(@RequestParam Integer minPrice, @RequestParam Integer maxPrice){
-        return housingService.findByPrice(minPrice, maxPrice);
+    public String findHousingByPrice(Model model){
+        Integer minPrice=0, maxPrice=0;
+        model.addAttribute("minPrice", minPrice);
+        model.addAttribute("maxPrice", maxPrice);
+        return "filter_price";
+    }
+
+    @RequestMapping(path = "/find_by_price")
+    public String findByPrice(@RequestParam Integer minPrice, @RequestParam Integer maxPrice, Model model){
+        List<Housing> housings = housingService.findByPrice(minPrice, maxPrice);
+        model.addAttribute("housings", housings);
+        return "housing";
     }
 
     @RequestMapping(path = "/find_housing_by_square")
-    public @ResponseBody List<Housing> findBySquare(@RequestParam Integer minSquare, @RequestParam Integer maxSquare){
-        return housingService.findBySquare(minSquare, maxSquare);
+    public String findHousingBySquare(Model model){
+        Integer minSquare=0, maxSquare=0;
+        model.addAttribute("minSquare", minSquare);
+        model.addAttribute("maxSquare", maxSquare);
+        return "filter_square";
+    }
+
+    @RequestMapping(path = "/find_by_square")
+    public String findBySquare(@RequestParam Integer minSquare, @RequestParam Integer maxSquare,
+                                                    Model model){
+        List<Housing> housings = housingService.findBySquare(minSquare, maxSquare);
+        model.addAttribute("housings", housings);
+        return "housing";
     }
 
     @RequestMapping(path = "/find_housing_by_number_of_rooms")
-    public @ResponseBody List<Housing> findByNumberOfRooms(@RequestParam Integer numberOfRooms){
-        return housingService.findByNumberOfRooms(numberOfRooms);
+    public String findHousingByNumberOfRooms(Model model){
+        Integer numberOfRooms=0;
+        model.addAttribute("numberOfRooms", numberOfRooms);
+        return "filter_number_of_rooms";
+    }
+
+    @RequestMapping(path = "/find_by_number_of_rooms")
+    public String findByNumberOfRooms(@RequestParam Integer numberOfRooms, Model model){
+        List<Housing> housings = housingService.findByNumberOfRooms(numberOfRooms);
+        model.addAttribute("housings", housings);
+        return "housing";
     }
 
     @RequestMapping(path = "/find_housing_by_nearest_metro")
-    public @ResponseBody List<Housing> findByNearestMetro(@RequestParam String nearestMetro){
-        return housingService.findByNearestMetro(nearestMetro);
+    public String findHousingByNearestMetro(Model model){
+        String nearestMetro="";
+        model.addAttribute("nearestMetro", nearestMetro);
+        return "filter_nearest_metro";
+    }
+
+    @RequestMapping(path = "/find_by_nearest_metro")
+    public String findByNearestMetro(@RequestParam String nearestMetro, Model model){
+        List<Housing> housings = housingService.findByNearestMetro(nearestMetro);
+        model.addAttribute("housings", housings);
+        return "housing";
     }
 
     @RequestMapping(path = "/find_housing_by_number_of_rooms_and_price")
-    public @ResponseBody List<Housing> findByNumberOfRoomsAndPrice(@RequestParam Integer numberOfRooms,
-                                                                   @RequestParam Integer minPrice,
-                                                                   @RequestParam Integer maxPrice){
-        return housingService.findByNumberOfRoomsAndPrice(numberOfRooms, minPrice, maxPrice);
+    public String findHousingByNumberOfRoomsAndPrice(Model model){
+        Integer minPrice=0, maxPrice=0, numberOfRooms=0;
+        model.addAttribute("numberOfRooms", numberOfRooms);
+        model.addAttribute("minPrice", minPrice);
+        model.addAttribute("maxPrice", maxPrice);
+        return "filter_number_of_rooms_and_price";
+    }
+
+    @RequestMapping(path = "/find_by_number_of_rooms_and_price")
+    public String findByNumberOfRoomsAndPrice(@RequestParam Integer numberOfRooms, @RequestParam Integer minPrice,
+                                                                   @RequestParam Integer maxPrice, Model model){
+        List<Housing> housings = housingService.findByNumberOfRoomsAndPrice(numberOfRooms, minPrice, maxPrice);
+        model.addAttribute("housings", housings);
+        return "housing";
     }
 
     @RequestMapping(path = "/find_housing_by_nearest_metro_and_type")
-    public @ResponseBody List<Housing> findByNearestMetroAndType(@RequestParam String nearestMetro,
-                                                                 @RequestParam String type){
-        return housingService.findByNearestMetroAndType(nearestMetro, type);
+    public String findHousingByNearestMetroAndType(Model model){
+        String nearestMetro="", type="";
+        model.addAttribute("nearestMetro", nearestMetro);
+        model.addAttribute("type", type);
+        return "filter_nearest_metro_and_type";
+    }
+
+    @RequestMapping(path = "/find_by_nearest_metro_and_type")
+    public String findByNearestMetroAndType(@RequestParam String nearestMetro, @RequestParam String type, Model model){
+        List<Housing> housings = housingService.findByNearestMetroAndType(nearestMetro, type);
+        model.addAttribute("housings", housings);
+        return "housing";
     }
 
     @RequestMapping(path = "/find_housing_by_nearest_metro_and_price")
-    public @ResponseBody List<Housing> findByNearestMetroAndPrice(@RequestParam String nearestMetro,
-                                                                  @RequestParam Integer minPrice,
-                                                                  @RequestParam Integer maxPrice){
-        return housingService.findByNearestMetroAndPrice(nearestMetro, minPrice, maxPrice);
+    public String findHousingByNearestMetroAndPrice(Model model){
+        String nearestMetro="";
+        Integer minPrice=0, maxPrice=0;
+        model.addAttribute("nearestMetro", nearestMetro);
+        model.addAttribute("minPrice", minPrice);
+        model.addAttribute("maxPrice", maxPrice);
+        return "filter_nearest_metro_and_price";
+    }
+
+    @RequestMapping(path = "/find_by_nearest_metro_and_price")
+    public String findByNearestMetroAndPrice(@RequestParam String nearestMetro, @RequestParam Integer minPrice,
+                                                                  @RequestParam Integer maxPrice, Model model){
+        List<Housing> housings = housingService.findByNearestMetroAndPrice(nearestMetro, minPrice, maxPrice);
+        model.addAttribute("housings", housings);
+        return "housing";
     }
 
     @RequestMapping(path = "/find_housing_by_nearest_metro_and_square")
-    public @ResponseBody List<Housing> findByNearestMetroAndSquare(@RequestParam String nearestMetro,
-                                                                   @RequestParam Integer minSquare,
-                                                                   @RequestParam Integer maxSquare){
-        return housingService.findByNearestMetroAndSquare(nearestMetro, minSquare, maxSquare);
+    public String findHousingByNearestMetroAndSquare(Model model){
+        String nearestMetro="";
+        Integer minSquare=0, maxSquare=0;
+        model.addAttribute("nearestMetro", nearestMetro);
+        model.addAttribute("minSquare", minSquare);
+        model.addAttribute("maxSquare", maxSquare);
+        return "filter_nearest_metro_and_square";
+    }
+
+    @RequestMapping(path = "/find_by_nearest_metro_and_square")
+    public String findByNearestMetroAndSquare(@RequestParam String nearestMetro, @RequestParam Integer minSquare,
+                                                                   @RequestParam Integer maxSquare, Model model){
+        List<Housing> housings = housingService.findByNearestMetroAndSquare(nearestMetro, minSquare, maxSquare);
+        model.addAttribute("housings", housings);
+        return "housing";
     }
 
     @RequestMapping(path = "/find_housing_by_nearest_metro_and_number_of_rooms")
-    public @ResponseBody List<Housing> findByNearestMetroAndNumberOfRooms(@RequestParam String nearestMetro,
-                                                                          @RequestParam Integer numberOfRooms){
-        return housingService.findByNearestMetroAndNumberOfRooms(nearestMetro, numberOfRooms);
+    public String findHousingByNearestMetroAndNumberOfRooms(Model model){
+        String nearestMetro="";
+        Integer numberOfRooms=0;
+        model.addAttribute("nearestMetro", nearestMetro);
+        model.addAttribute("numberOfRooms", numberOfRooms);
+        return "filter_nearest_metro_and_number_of_rooms";
+    }
+
+    @RequestMapping(path = "/find_by_nearest_metro_and_number_of_rooms")
+    public String findByNearestMetroAndNumberOfRooms(@RequestParam String nearestMetro,
+                                                     @RequestParam Integer numberOfRooms, Model model){
+        List<Housing> housings = housingService.findByNearestMetroAndNumberOfRooms(nearestMetro, numberOfRooms);
+        model.addAttribute("housings", housings);
+        return "housing";
     }
 
     @RequestMapping(path = "/find_housing_by_nearest_metro_and_type_and_square")
-    public @ResponseBody List<Housing> findByNearestMetroAndTypeAndSquare(@RequestParam String nearestMetro,
-                                                                          @RequestParam String type,
+    public String findHousingByNearestMetroAndTypeAndSquare(Model model){
+        String nearestMetro="", type="";
+        Integer minSquare=0, maxSquare=0;
+        model.addAttribute("nearestMetro", nearestMetro);
+        model.addAttribute("type", type);
+        model.addAttribute("minSquare", minSquare);
+        model.addAttribute("maxSquare", maxSquare);
+        return "filter_nearest_metro_and_type_and_square";
+    }
+
+    @RequestMapping(path = "/find_by_nearest_metro_and_type_and_square")
+    public String findByNearestMetroAndTypeAndSquare(@RequestParam String nearestMetro, @RequestParam String type,
                                                                           @RequestParam Integer minSquare,
-                                                                          @RequestParam Integer maxSquare){
-        return housingService.findByNearestMetroAndTypeAndSquare(nearestMetro, type, minSquare, maxSquare);
+                                                                          @RequestParam Integer maxSquare, Model model){
+        List<Housing> housings = housingService.findByNearestMetroAndTypeAndSquare(nearestMetro, type, minSquare,
+                maxSquare);
+        model.addAttribute("housings", housings);
+        return "housing";
     }
 }

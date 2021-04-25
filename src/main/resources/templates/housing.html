@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Housings</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content>
+    <meta name="author" content>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+    <a href="/">Main page</a><br>
+    <table border="5">
+        <tr>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Square</th>
+            <th>Number of rooms</th>
+            <th>District</th>
+            <th>Street</th>
+            <th>Number of house</th>
+            <th>Nearest metro</th>
+        </tr>
+        <th:block th:each="housing: ${housings}">
+            <tr>
+                <th th:text="${housing.getType()}"></th>
+                <th th:text="${housing.getPrice()}"></th>
+                <th th:text="${housing.getSquare()}"></th>
+                <th th:text="${housing.getNumberOfRooms()}"></th>
+                <th th:text="${housing.getAddress().getDistrict()}"></th>
+                <th th:text="${housing.getAddress().getStreet()}"></th>
+                <th th:text="${housing.getAddress().getNumberOfHouse()}"></th>
+                <th th:text="${housing.getNearestMetro()}"></th>
+            </tr>
+        </th:block>
+    </table>
+</body>
+</html>

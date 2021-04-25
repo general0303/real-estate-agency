@@ -22,7 +22,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().cors().disable()
-                .authorizeRequests().antMatchers("/login", "logout", "/", "/all_housings", "/find_housing")
+                .authorizeRequests().antMatchers("/login", "logout", "/", "/all_housings",
+                "/find_housing_by_type", "/find_housing_by_price", "/find_housing_by_square",
+                "/find_housing_by_number_of_rooms", "/find_housing_by_nearest_metro",
+                "/find_housing_by_number_of_rooms_and_price", "/find_housing_by_nearest_metro_and_type",
+                "/find_housing_by_nearest_metro_and_price", "/find_housing_by_nearest_metro_and_square",
+                "/find_housing_by_nearest_metro_and_number_of_rooms",
+                "/find_housing_by_nearest_metro_and_type_and_square", "/find_by_type", "/find_by_price",
+                "/find_by_square", "/find_by_number_of_rooms", "/find_by_nearest_metro",
+                "/find_by_number_of_rooms_and_price", "/find_by_nearest_metro_and_type",
+                "/find_by_nearest_metro_and_price", "/find_by_nearest_metro_and_square",
+                "/find_by_nearest_metro_and_number_of_rooms", "/find_by_nearest_metro_and_type_and_square")
                 .permitAll().anyRequest().authenticated()
                 .and().formLogin()
                 .loginPage("/login").permitAll()
