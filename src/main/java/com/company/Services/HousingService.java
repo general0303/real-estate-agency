@@ -15,29 +15,34 @@ public class HousingService {
     HousingRepository housingRepository;
 
     @Autowired
-    AddressRepository addressRepository;
+    AddressService addressService;
 
     public String addNewHousing(String type, Integer price, Integer square, Integer numberOfRooms, String nearestMetro,
-                                Integer address_id){
+                                String image, Integer addressId){
         Housing housing = new Housing();
         housing.setType(type);
         housing.setPrice(price);
         housing.setSquare(square);
         housing.setNumberOfRooms(numberOfRooms);
         housing.setNearestMetro(nearestMetro);
-        Address address = addressRepository.getOne(address_id);
+        housing.setImage(image);
+        Address address = addressService.findAddress(addressId);
         housing.setAddress(address);
         housingRepository.save(housing);
         return "ok";
     }
 
-    public String deleteHousing(Integer housing_id){
-        Housing housing = housingRepository.getOne(housing_id);
+    public String deleteHousing(Integer id){
+        Housing housing = housingRepository.getOne(id);
         Address address = housing.getAddress();
         housingRepository.delete(housing);
         if (address.getHousings().size() == 0)
-            addressRepository.delete(address);
+            addressService.deleteAddress(address);
         return "ok";
+    }
+
+    public Housing find(Integer id){
+        return housingRepository.getOne(id);
     }
 
     public List<Housing> findAll(){

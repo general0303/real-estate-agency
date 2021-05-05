@@ -32,7 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/find_by_square", "/find_by_number_of_rooms", "/find_by_nearest_metro",
                 "/find_by_number_of_rooms_and_price", "/find_by_nearest_metro_and_type",
                 "/find_by_nearest_metro_and_price", "/find_by_nearest_metro_and_square",
-                "/find_by_nearest_metro_and_number_of_rooms", "/find_by_nearest_metro_and_type_and_square")
+                "/find_by_nearest_metro_and_number_of_rooms", "/find_by_nearest_metro_and_type_and_square",
+                "/housing/{id}")
                 .permitAll().anyRequest().authenticated()
                 .and().formLogin()
                 .loginPage("/login").permitAll()

@@ -64,4 +64,15 @@ public class Address {
     public List<Housing> getHousings() {
         return housings;
     }
+
+    @Column(name="map", length = 1000, nullable = false)
+    private String map;
+
+    public String getMap() {
+        return map;
+    }
+
+    public void setMap(String map) {
+        this.map = map;
+    }
 }

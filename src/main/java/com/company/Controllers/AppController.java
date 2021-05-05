@@ -7,9 +7,7 @@ import com.company.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,16 +33,51 @@ public class AppController {
     }
 
     @RequestMapping(path = "/add_new_address")
-    public @ResponseBody String addNewAddress(@RequestParam String district, @RequestParam String street,
-                                              @RequestParam Integer numberOfHouse){
-        return addressService.addNewAddress(district, street, numberOfHouse);
+    public String addNewAddress(Model model){
+        String district = "";
+        model.addAttribute("district", district);
+        String street = "";
+        model.addAttribute("street", street);
+        Integer numberOfHouse = 0;
+        model.addAttribute("numberOfHouse", numberOfHouse);
+        String map = "";
+        model.addAttribute(map);
+        return "add_new_address";
+    }
+
+    @RequestMapping(path = "/add_address")
+    public String addAddress(@RequestParam String district, @RequestParam String street,
+                                              @RequestParam Integer numberOfHouse, @RequestParam String map){
+        addressService.addNewAddress(district, street, numberOfHouse, map);
+        return "redirect:/";
     }
 
     @RequestMapping(path = "/add_new_housing")
-    public @ResponseBody String addNewHousing(@RequestParam String type, @RequestParam Integer price,
+    public String addNewHousing(Model model){
+        String type = "";
+        model.addAttribute("type", type);
+        Integer price = 0;
+        model.addAttribute("price", price);
+        Integer square = 0;
+        model.addAttribute("square", square);
+        Integer numberOfRooms = 0;
+        model.addAttribute("numberOfRooms", numberOfRooms);
+        String nearestMetro = "";
+        model.addAttribute("nearestMetro", nearestMetro);
+        String image = "";
+        model.addAttribute("image", image);
+        Integer addressId = 0;
+        model.addAttribute("addressId", addressId);
+        return "add_new_housing";
+    }
+
+    @RequestMapping(path = "/add_housing")
+    public String addHousing(@RequestParam String type, @RequestParam Integer price,
                                                @RequestParam Integer square, @RequestParam Integer numberOfRooms,
-                                              @RequestParam String nearestMetro, @RequestParam Integer address_id){
-        return housingService.addNewHousing(type, price, square, numberOfRooms, nearestMetro, address_id);
+                                              @RequestParam String nearestMetro, @RequestParam String image,
+                                              @RequestParam Integer addressId){
+        housingService.addNewHousing(type, price, square, numberOfRooms, nearestMetro, image, addressId);
+        return "redirect:/all_housings";
     }
 
     @RequestMapping(path = "/delete_a_housing")
@@ -236,5 +269,12 @@ public class AppController {
                 maxSquare);
         model.addAttribute("housings", housings);
         return "housing";
+    }
+
+    @RequestMapping(path = "/housing/{id}")
+    public String housing(@PathVariable Integer id, Model model){
+        Housing housing = housingService.find(id);
+        model.addAttribute("housing", housing);
+        return "certain_housing";
     }
 }

@@ -83,4 +83,15 @@ public class Housing {
     public Address getAddress() {
         return address;
     }
+
+    @Column(name="image", length = 150, nullable = false)
+    private String image;
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getImage() {
+        return image;
+    }
 }

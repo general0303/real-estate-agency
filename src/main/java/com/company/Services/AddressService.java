@@ -10,12 +10,22 @@ public class AddressService {
     @Autowired
     private AddressRepository addressRepository;
 
-    public String addNewAddress(String district, String street, Integer numberOfHouse){
+    public String addNewAddress(String district, String street, Integer numberOfHouse, String map){
         Address address = new Address();
         address.setDistrict(district);
         address.setStreet(street);
         address.setNumberOfHouse(numberOfHouse);
+        address.setMap(map);
         addressRepository.save(address);
         return "ok";
+    }
+
+    public String deleteAddress(Address address){
+        addressRepository.delete(address);
+        return "ok";
+    }
+
+    public Address findAddress(Integer id){
+        return addressRepository.getOne(id);
     }
 }
