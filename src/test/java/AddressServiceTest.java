@@ -18,8 +18,7 @@ public class AddressServiceTest {
     @Captor
     ArgumentCaptor<Address> captor;
 
-    @Test
-    void addNewAddress(){
+    Address createAddress(){
         Address address = new Address();
         address.setDistrict("West");
         address.setStreet("Kuntsevskaya");
@@ -28,9 +27,26 @@ public class AddressServiceTest {
                 "4098515488849!3d55.72701192590375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54ee9085" +
                 "1b1c5%3A0xc2436b04ac4f843a!2z0JrRg9C90YbQtdCy0YHQutCw0Y8g0YPQuy4sIDEsINCc0L7RgdC60LLQsCwgMTIxMzUx!" +
                 "5e0!3m2!1sru!2sru!4v1620484206904!5m2!1sru!2sru");
+        return address;
+    }
+
+    @Test
+    void addNewAddress(){
+        Address address = createAddress();
         addressRepository.save(address);
         Mockito.verify(addressRepository).save(captor.capture());
         Address captured = captor.getValue();
         Assertions.assertEquals("West", captured.getDistrict());
+    }
+
+    @Test
+    void deleteAddress(){
+        Address address = createAddress();
+        addressRepository.save(address);
+        addressRepository.delete(address);
+        Mockito.verify(addressRepository).save(captor.capture());
+        Address captured = captor.getValue();
+        Assertions.assertEquals("West", captured.getDistrict());
+        Assertions.assertEquals(0, addressRepository.findAll().size());
     }
 }

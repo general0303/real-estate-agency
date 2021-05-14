@@ -1,7 +1,6 @@
 import com.company.Entitys.Address;
 import com.company.Entitys.Housing;
 import com.company.Repositotys.HousingRepository;
-import com.company.Services.HousingService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
