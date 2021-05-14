@@ -38,7 +38,7 @@
                 <th th:text="${housing.getAddress().getStreet()}"></th>
                 <th th:text="${housing.getAddress().getNumberOfHouse()}"></th>
                 <th th:text="${housing.getNearestMetro()}"></th>
-                <th><a th:href="@{/housing/{id}(id=${housing.id})}"><img th:src="${housing.getImage()}" width="128" height="96" alt="More detailed"></a><br>
+                <th><a th:href="@{/housing/{id}(id=${housing.id})}"><img th:src="${housing.getImage()}" height="96" alt="More detailed"></a><br>
                     <a th:href="@{/housing/{id}(id=${housing.id})}">More detail</a></th>
             </tr>
         </th:block>

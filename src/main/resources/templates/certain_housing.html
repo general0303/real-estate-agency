@@ -14,9 +14,9 @@
 <a href="/all_housings">All housings</a><br>
 <table border="5" cellpadding="10" align="center">
     <tr>
-        <td rowspan="2"><img th:src="${housing.getImage()}" width="256" height="256">
+        <td rowspan="2"><img th:src="${housing.getImage()}" height="256">
         <td rowspan="2">
-            <iframe th:src="${housing.getAddress().getMap()}" width="256" height="256"></iframe>
+            <iframe th:src="${housing.getAddress().getMap()}" height="256"></iframe>
         </td>
         <th>Information</th></tr>
         <tr>
