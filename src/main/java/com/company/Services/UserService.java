@@ -16,14 +16,7 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
-
-    public void signUpUser(User user) {
-        final String encryptedPassword = encoder.encode(user.getPassword());
-        user.setPassword(encryptedPassword);
-        if(userRepository.findById(user.getUsername()).isEmpty()) {
-            userRepository.save(user);
-        }
-    }
+    
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
