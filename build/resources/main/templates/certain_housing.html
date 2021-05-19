@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Housings</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content>
+    <meta name="author" content>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+<a href="/">Main page</a><br>
+<a href="/all_housings">All housings</a><br>
+<table border="5" cellpadding="10" align="center">
+    <tr>
+        <td rowspan="2"><img th:src="${housing.getImage()}" height="256">
+        <td rowspan="2">
+            <iframe th:src="${housing.getAddress().getMap()}" height="256"></iframe>
+        </td>
+        <th>Information</th></tr>
+        <tr>
+            <th>
+                Type: <th:block th:text="${housing.getType()}"></th:block><br>
+                Price: <th:block th:text="${housing.getPrice()}"></th:block><br>
+                Square: <th:block th:text="${housing.getSquare()}"></th:block><br>
+                Number of rooms: <th:block th:text="${housing.getNumberOfRooms()}"></th:block><br>
+                District: <th:block th:text="${housing.getAddress().getDistrict()}"></th:block><br>
+                Street: <th:block th:text="${housing.getAddress().getStreet()}"></th:block><br>
+                Number of House: <th:block th:text="${housing.getAddress().getNumberOfHouse()}"></th:block><br>
+                Nearest metro: <th:block th:text="${housing.getNearestMetro()}"></th:block>
+            </th>
+        </tr>
+</table>
+</body>
+</html>

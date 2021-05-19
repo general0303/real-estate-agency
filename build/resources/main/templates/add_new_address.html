@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>find of number of rooms and price</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content>
+    <meta name="author" content>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+<a href="/">Main page</a><br>
+<h1>Add new address</h1>
+<form action="#" th:action="@{/add_address}">
+    <p>District: <input type="text" name="district" th:value="*{district}" class="form-control"/></p>
+    <p>Street: <input type="text" name="street" th:value="*{street}" class="form-control"/></p>
+    <p>Number of House: <input type="number" name="numberOfHouse" th:value="*{numberOfHouse}" class="form-control"/></p>
+    <p>Map: <input type="text" name="map" th:value="*{map}" class="form-control"></p>
+    <p><input type="submit" value="Submit" /></p>
+</form>
+</body>
+</html>

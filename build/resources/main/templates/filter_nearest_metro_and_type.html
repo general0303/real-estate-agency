@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>find by nearest metro and type</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content>
+    <meta name="author" content>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+<a href="/">Main page</a><br>
+<h1>Form</h1>
+<form action="#" th:action="@{/find_by_nearest_metro_and_type}">
+    <p>Nearest metro: <input type="text" name="nearestMetro" th:value="*{nearestMetro}" class="form-control"/></p>
+    <p>Type: <input type="text" name="type" th:value="*{type}" class="form-control"/></p>
+    <p><input type="submit" value="Submit" /></p>
+</form>
+</body>
+</html>
