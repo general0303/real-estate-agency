@@ -7,11 +7,6 @@ plugins {
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
 
 repositories {
     mavenCentral()
@@ -34,11 +29,6 @@ dependencies {
     testCompile "org.mockito:mockito-core:1.+"
 }
 
-
-jar {
-    baseName = 'gs-gradle'
-    version =  '0.1.0'
-}
 
 test {
     useJUnitPlatform()
