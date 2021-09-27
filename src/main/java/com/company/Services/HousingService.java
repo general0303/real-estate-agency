@@ -29,13 +29,13 @@ public class HousingService {
     /**
      * Метод добавления нового жилья в базу. Создает новое жилье и отдает его housingRepository, который и
      * производит добавление
-     * @param type - строка, обозначающая тип жилья. Например, квартира или жилой дом
-     * @param price - цена
-     * @param square - площадь
-     * @param numberOfRooms - кол-во комнат
-     * @param nearestMetro - название ближайшей станции метро
-     * @param image - строка, ссылка на изображение этого жилья в интернете
-     * @param addressId - id адреса этого жилья
+     * @param type строка, обозначающая тип жилья. Например, квартира или жилой дом
+     * @param price цена
+     * @param square площадь
+     * @param numberOfRooms кол-во комнат
+     * @param nearestMetro название ближайшей станции метро
+     * @param image строка, ссылка на изображение этого жилья в интернете
+     * @param addressId id адреса этого жилья
      * @return сообщение "ok"
      */
     public String addNewHousing(String type, Integer price, Integer square, Integer numberOfRooms, String nearestMetro,
@@ -54,11 +54,11 @@ public class HousingService {
     }
 
     /**
-     * Метод удаления желья. Получает id жилья, при помощи housingRepository находит жилье с таким id в базе,
+     * Метод удаления жилья. Получает id жилья, при помощи housingRepository находит жилье с таким id в базе,
      * сохраняет его адрес и отдает его addressRepository, который  и производит удаление. Затем метод смотрит,
      * сколько объектов недвижимомти осталось по данному адресу. Если их не осталось, сообщает addressService,
      * что необходимо удалить данный адрес из базы
-     * @param id - id жилья
+     * @param id id жилья
      * @return сообщение "ok"
      */
     public String deleteHousing(Integer id){
@@ -72,7 +72,7 @@ public class HousingService {
 
     /**
      * Метод поиска жилья по id
-     * @param id - id жилья
+     * @param id id жилья
      * @return объект класса Housing
      */
     public Housing find(Integer id){
@@ -89,7 +89,7 @@ public class HousingService {
 
     /**
      * Метод поиска жилья по типу
-     * @param type - тип жилья
+     * @param type тип жилья
      * @return список объектов класса Housing, тип которых совпадает с переданным
      */
     public List<Housing> findByType(String type){
@@ -98,8 +98,8 @@ public class HousingService {
 
     /**
      * Метод поиска жилья по цене
-     * @param minPrice - минимльная цена
-     * @param maxPrice - максимальная цена
+     * @param minPrice минимльная цена
+     * @param maxPrice максимальная цена
      * @return список объектов класса Housing, цена которых входит в указанный диапазон
      */
     public List<Housing> findByPrice(Integer minPrice, Integer maxPrice){
@@ -108,8 +108,8 @@ public class HousingService {
 
     /**
      * Метод поиска жилья по площади
-     * @param minSquare - минимальная площадь
-     * @param maxSquare - максимальная площадь
+     * @param minSquare минимальная площадь
+     * @param maxSquare максимальная площадь
      * @return список объектов класса Housing, площадь которых входит в указанный диапазон
      */
     public List<Housing> findBySquare(Integer minSquare, Integer maxSquare){
@@ -118,7 +118,7 @@ public class HousingService {
 
     /**
      * Метод поиска жилья по кол-ву комнат
-     * @param numberOfRooms - кол-во комнат
+     * @param numberOfRooms кол-во комнат
      * @return список объектов класса Housing, кол-во комнат которых совпадает с переданным
      */
     public List<Housing> findByNumberOfRooms(Integer numberOfRooms){
@@ -127,7 +127,7 @@ public class HousingService {
 
     /**
      * Метод поиска жилья по названию ближайшей станции метро
-     * @param nearestMetro - название ближайшей станции метро
+     * @param nearestMetro название ближайшей станции метро
      * @return список объектов класса Housing, ближайшее метро которых совпадает с переданным
      */
     public List<Housing> findByNearestMetro(String nearestMetro){
@@ -136,9 +136,9 @@ public class HousingService {
 
     /**
      * Метод поиска жилья по кол-ву комнат и цене
-     * @param numberOfRooms - кол-во комнат
-     * @param minPrice - минимальная цена
-     * @param maxPrice - максимальная цена
+     * @param numberOfRooms кол-во комнат
+     * @param minPrice минимальная цена
+     * @param maxPrice максимальная цена
      * @return список объектов класса Housing, кол-во комнат и цена которых совпадает с переданными
      */
     public List<Housing> findByNumberOfRoomsAndPrice(Integer numberOfRooms, Integer minPrice, Integer maxPrice){
@@ -147,8 +147,8 @@ public class HousingService {
 
     /**
      * Метод поиска жилья по названию ближайшей станции метро и типу
-     * @param nearestMetro - название ближайшей станции метро
-     * @param type - тип жилья
+     * @param nearestMetro название ближайшей станции метро
+     * @param type тип жилья
      * @return список объектов класса Housing, ближайшее метро и тип которых совпадает с переданными
      */
     public List<Housing> findByNearestMetroAndType(String nearestMetro, String type){
@@ -157,9 +157,9 @@ public class HousingService {
 
     /**
      * Метод поиска жилья по названию ближайшей станции метро и цене
-     * @param nearestMetro - название ближайшей станции метро
-     * @param minPrice - минимальная цена
-     * @param maxPrice - максимальная цена
+     * @param nearestMetro название ближайшей станции метро
+     * @param minPrice минимальная цена
+     * @param maxPrice максимальная цена
      * @return список объектов класса Housing, ближайшее метро и цена которых совпадает с переданными
      */
     public List<Housing> findByNearestMetroAndPrice(String nearestMetro, Integer minPrice, Integer maxPrice){
@@ -168,9 +168,9 @@ public class HousingService {
 
     /**
      * Метод поиска жилья по названию ближайшей станции метро и площади
-     * @param nearestMetro - название ближайшей станции метро
-     * @param minSquare - минимальная площадь
-     * @param maxSquare - максимальная площадь
+     * @param nearestMetro название ближайшей станции метро
+     * @param minSquare минимальная площадь
+     * @param maxSquare максимальная площадь
      * @return список объектов класса Housing, ближайшее метро и площадь которых совпадает с переданными
      */
     public List<Housing> findByNearestMetroAndSquare(String nearestMetro, Integer minSquare, Integer maxSquare){
@@ -179,8 +179,8 @@ public class HousingService {
 
     /**
      * Метод поиска жилья по названию ближайшей станции метро и кол-ву комнат
-     * @param nearestMetro - название ближайшей станции метро
-     * @param numberOfRooms - кол-во комнат
+     * @param nearestMetro название ближайшей станции метро
+     * @param numberOfRooms кол-во комнат
      * @return список объектов класса Housing, ближайшее метро и кол-во комнат которых совпадает с переданными
      */
     public List<Housing> findByNearestMetroAndNumberOfRooms(String nearestMetro, Integer numberOfRooms){
@@ -189,10 +189,10 @@ public class HousingService {
 
     /**
      * Метод поиска жилья по названию ближайшей станции метро, типу и площади
-     * @param nearestMetro - название ближайшей станции метро
-     * @param type - тип жилья
-     * @param minSquare - минимальная площадь
-     * @param maxSquare - максимальная площадь
+     * @param nearestMetro название ближайшей станции метро
+     * @param type тип жилья
+     * @param minSquare минимальная площадь
+     * @param maxSquare максимальная площадь
      * @return список объектов класса Housing, ближайшее метро, площадь и тип которых совпадает с переданными
      */
     public List<Housing> findByNearestMetroAndTypeAndSquare(String nearestMetro, String type, Integer minSquare,

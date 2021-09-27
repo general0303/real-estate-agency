@@ -18,10 +18,10 @@ public class AddressService {
     /**
      * Метод добавления нового адреса в базу. Создает новый адрес и отдает его addressRepository, который и
      * производит добавление
-     * @param district - название округа
-     * @param street - название улицы
-     * @param numberOfHouse - номер дома
-     * @param map - строка, frame с отборажением введенного адреса на google map
+     * @param district название округа
+     * @param street название улицы
+     * @param numberOfHouse номер дома
+     * @param map строка, frame с отборажением введенного адреса на google map
      * @return сообщение "ok"
      */
     public String addNewAddress(String district, String street, Integer numberOfHouse, String map){
@@ -37,7 +37,7 @@ public class AddressService {
     /**
      * Метод удаления адреса из базы. Получает на вход адрес и отдает его addressRepository, который и
      * производит удаление
-     * @param address - Объект класса Address, который и нужно удалить
+     * @param address Объект класса Address, который и нужно удалить
      * @return сообщение "ok"
      */
     public String deleteAddress(Address address){
